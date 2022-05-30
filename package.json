@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "parcel index.html",
+    "prebuild": "[[ $CI = true ]] && npx pnpm@3 install -r --store=node_modules/.pnpm-store || echo skipping pnpm install",
     "build": "parcel build src/index.html"
   }
 }
