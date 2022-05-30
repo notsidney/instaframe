@@ -17,5 +17,9 @@
     "process": {
       "global": "{}"
     }
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build src/index.html"
   }
 }
