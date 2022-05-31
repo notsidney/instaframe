@@ -47,9 +47,10 @@ export default function App() {
         <h1 className="text-3xl font-semibold">Instaframe</h1>
       </header>
 
-      <div className="flex gap-3 -mx-0.5">
+      <div className="flex gap-3">
         <input
           type="file"
+          accept="image/*"
           id="image"
           className="opacity-0 w-px h-px absolute"
           onChange={(e) => {
@@ -129,7 +130,12 @@ export default function App() {
         }
         alt="Your image"
         className={clsx(
-          "w-full bg-white border border-slate-200 border-t-slate-100 border-b-slate-300 dark:border-slate-900 shadow-xl shadow-slate-300 dark:shadow-slate-900 relative z-10",
+          "w-full relative z-10",
+          "bg-white",
+          "border border-slate-200 border-t-slate-100 border-b-slate-300 dark:border-slate-900 shadow-xl",
+          "shadow-slate-300 dark:shadow-slate-900",
+          "dark:opacity-80 dark:hover:opacity-100 dark:transition-opacity",
+          "select-all",
           `aspect-${ratio}`
         )}
       />
@@ -138,7 +144,7 @@ export default function App() {
 
       <div
         className={clsx(
-          "flex gap-2 -mx-0.5",
+          "flex gap-2",
           "bg-slate-100 dark:bg-slate-800 rounded-lg py-2 px-4",
           !image && "text-slate-100 dark:text-slate-800"
         )}
@@ -164,14 +170,14 @@ export default function App() {
         </span>
       </div>
 
-      <footer className="text-sm opacity-30 hover:opacity-60 flex justify-between">
+      <footer className="text-sm text-slate-400 dark:text-slate-500 flex justify-between">
         <div>
           Made by{" "}
           <a
             href="https://twitter.com/nots_dney"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold"
+            className="hover:text-primary-500 active:opacity-50 transition-colors font-medium"
           >
             @nots_dney
           </a>
@@ -182,7 +188,7 @@ export default function App() {
             href="https://github.com/notsidney/instaframe"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold"
+            className="hover:text-primary-500 active:opacity-50 transition-colors font-medium"
           >
             Source code
           </a>
