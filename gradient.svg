@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+  preserveAspectRatio="none" viewBox="0 0 100 100">
+  <defs>
+    <filter id="sparkBlur" height="200%" width="200%" x="-50%" y="-50%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8"></feGaussianBlur>
+    </filter>
+  </defs>
+  <ellipse filter="url(#sparkBlur)" fill="#D300C5" cx="74%" cy="10%" rx="80%" ry="80%"></ellipse>
+  <ellipse filter="url(#sparkBlur)" fill="#7638FA" cx="80%" cy="20%" rx="44%" ry="44%"></ellipse>
+  <ellipse filter="url(#sparkBlur)" fill="#FF0069" cx="20%" cy="84%" rx="54%" ry="58%"
+    style="transform: rotate(-30deg)"></ellipse>
+</svg>
