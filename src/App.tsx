@@ -123,10 +123,13 @@ export default function App() {
       </div>
 
       <img
-        src={outputDataURL}
+        src={
+          outputDataURL ||
+          "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        }
         alt="Your image"
         className={clsx(
-          "w-full bg-white border border-slate-200 border-t-slate-100 border-b-slate-300 dark:border-slate-900 shadow-xl shadow-slate-300 dark:shadow-slate-900 text-white relative z-10",
+          "w-full bg-white border border-slate-200 border-t-slate-100 border-b-slate-300 dark:border-slate-900 shadow-xl shadow-slate-300 dark:shadow-slate-900 relative z-10",
           `aspect-${ratio}`
         )}
       />
