@@ -123,22 +123,30 @@ export default function App() {
         </div>
       </div>
 
-      <img
-        src={
+      <a
+        href={
           outputDataURL ||
           "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         }
-        alt="Your image"
-        className={clsx(
-          "w-full relative z-10",
-          "bg-white",
-          "border border-slate-200 border-t-slate-100 border-b-slate-300 dark:border-slate-900 shadow-xl",
-          "shadow-slate-300 dark:shadow-slate-900",
-          "dark:opacity-80 dark:hover:opacity-100 dark:transition-opacity",
-          "select-all",
-          `aspect-${ratio}`
-        )}
-      />
+        download
+      >
+        <img
+          src={
+            outputDataURL ||
+            "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          }
+          alt="Your image"
+          className={clsx(
+            "w-full relative z-10",
+            "bg-white",
+            "border border-slate-200 border-t-slate-100 border-b-slate-300 dark:border-slate-900 shadow-xl",
+            "shadow-slate-300 dark:shadow-slate-900",
+            "dark:opacity-80 dark:hover:opacity-100 dark:transition-opacity",
+            "select-all",
+            `aspect-${ratio}`
+          )}
+        />
+      </a>
 
       <canvas id="canvas" ref={canvasRef} className="hidden" />
 
