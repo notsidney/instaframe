@@ -22,6 +22,6 @@
   },
   "scripts": {
     "start": "parcel --no-autoinstall src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html --public-url https://instaframe.sidney.me"
   }
 }
