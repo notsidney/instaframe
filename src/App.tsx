@@ -42,10 +42,12 @@ export default function App() {
   }
 
   return (
-    <main className="container mx-auto max-w-md p-4 flex flex-col gap-4">
-      <h1 className="text-3xl font-semibold">Instaframe</h1>
+    <main className="container mx-auto max-w-md px-4 py-6 flex flex-col gap-4 select-none">
+      <header>
+        <h1 className="text-3xl font-semibold">Instaframe</h1>
+      </header>
 
-      <div className="flex gap-2">
+      <div className="flex gap-3 -mx-0.5">
         <input
           type="file"
           id="image"
@@ -91,11 +93,13 @@ export default function App() {
           </span>
         </label>
 
-        <div className="grid grid-cols-2 divide-x" role="group">
+        <div
+          className="grid grid-cols-2 btn p-1 gap-0 hover:bg-slate-100 dark:hover:bg-slate-800 active:opacity-100"
+          role="group"
+        >
           <button
             className={clsx(
-              "btn",
-              "rounded-r-none",
+              "btn rounded-lg py-1",
               ratio === "square" && "btn-primary"
             )}
             aria-pressed={ratio === "square"}
@@ -106,8 +110,7 @@ export default function App() {
           </button>
           <button
             className={clsx(
-              "btn",
-              "rounded-l-none",
+              "btn rounded-lg py-1",
               ratio === "full" && "btn-primary"
             )}
             aria-pressed={ratio === "full"}
@@ -119,23 +122,69 @@ export default function App() {
         </div>
       </div>
 
-      {image && (
-        <img
-          src={outputDataURL}
-          alt="Your image"
-          className={clsx(
-            "w-100 h-auto bg-white border border-slate-100 dark:border-slate-900 shadow-lg"
-          )}
-        />
-      )}
+      <img
+        src={outputDataURL}
+        alt="Your image"
+        className={clsx(
+          "w-full bg-white border border-slate-200 border-t-slate-100 border-b-slate-300 dark:border-slate-900 shadow-xl shadow-slate-300 dark:shadow-slate-900 text-white relative z-10",
+          `aspect-${ratio}`
+        )}
+      />
 
       <canvas id="canvas" ref={canvasRef} className="hidden" />
 
-      {image && (
+      <div
+        className={clsx(
+          "flex gap-2 -mx-0.5",
+          "bg-slate-100 dark:bg-slate-800 rounded-lg py-2 px-4",
+          !image && "text-slate-100 dark:text-slate-800"
+        )}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+          />
+        </svg>
+        <span>
+          <b className="font-semibold">To save:</b>
+          <br />
+          Touch and hold the image &gt; Add&nbsp;to&nbsp;Photos
+        </span>
+      </div>
+
+      <footer className="text-sm opacity-30 hover:opacity-60 flex justify-between">
         <div>
-          <b>To save:</b> Touch the image and hold &gt; Add to Photos
+          Made by{" "}
+          <a
+            href="https://twitter.com/nots_dney"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold"
+          >
+            @nots_dney
+          </a>
         </div>
-      )}
+
+        <div>
+          <a
+            href="https://github.com/notsidney/instaframe"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold"
+          >
+            Source code
+          </a>
+        </div>
+      </footer>
     </main>
   );
 }

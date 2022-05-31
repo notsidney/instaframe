@@ -4,11 +4,11 @@
 
 @layer components {
   .btn {
-    @apply bg-slate-200 hover:bg-slate-300 active:bg-slate-400 dark:bg-slate-600 dark:hover:bg-slate-700 dark:active:bg-slate-800 rounded-xl py-2 px-4 flex gap-1.5 items-center justify-center dark:text-white text-center font-medium disabled:opacity-30 disabled:pointer-events-none;
+    @apply bg-slate-100 hover:bg-slate-200 active:opacity-50 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl py-2 px-4 flex gap-1.5 items-center justify-center dark:text-white text-center font-medium select-none disabled:opacity-30 disabled:pointer-events-none;
   }
 
   .btn-primary {
-    @apply bg-pink-500 hover:bg-pink-600 active:bg-pink-700 text-white disabled:bg-slate-200 disabled:text-current disabled:dark:bg-slate-600;
+    @apply bg-pink-500 hover:bg-pink-600 text-white disabled:bg-slate-200 disabled:text-current disabled:dark:bg-slate-800;
   }
 
   .btn-lg {
