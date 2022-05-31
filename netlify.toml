@@ -1,0 +1,4 @@
+# Use pnpm
+# https://www.seancdavis.com/blog/use-pnpm-with-netlify/
+[build.environment]
+  NPM_FLAGS="--prefix=/dev/null"
