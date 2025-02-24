@@ -1,12 +1,32 @@
 import { useState, useRef } from "react";
 import clsx from "clsx";
 
-const CANVAS_WIDTH = 1440;
-const MIN_PADDING = 38;
+const CANVAS_WIDTH = 4320;
+const MIN_PADDING = 90;
+type ratio = "square" | "full" | "landscape";
+
+const RATIOS = {
+  square: {
+    label: "Square",
+    width: 1,
+    height: 1
+  },
+  full: {
+    label: "Portrait",
+    width: 4,
+    height: 5,
+  },
+  landscape: {
+    label: "Landscape",
+    width: 5,
+    height: 4
+  }
+}
 
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [ratio, setRatio] = useState<"square" | "full">("square");
+  const [ratio, setRatio] = useState<ratio>("square");
+  const [BGColor, setBGColor] = useState<String>("white");
   const [image, setImage] = useState<HTMLImageElement | null>(null);
 
   const handleRatioChange = (newRatio: typeof ratio) => setRatio(newRatio);
@@ -15,9 +35,9 @@ export default function App() {
   let outputDataURL = "";
   if (canvas) {
     canvas.width = CANVAS_WIDTH;
-    canvas.height = ratio === "square" ? CANVAS_WIDTH : (5 / 4) * CANVAS_WIDTH;
+    canvas.height = CANVAS_WIDTH * RATIOS[ratio].height / RATIOS[ratio].width;
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = BGColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     if (image) {
@@ -42,7 +62,7 @@ export default function App() {
   }
 
   return (
-    <main className="container mx-auto max-w-md px-4 py-6 flex flex-col gap-4 select-none">
+    <main className="container mx-auto max-w-md px-1 py-1 flex flex-col gap-4 select-none">
       <header>
         <h1 className="text-3xl font-semibold">Instaframe</h1>
       </header>
@@ -95,7 +115,7 @@ export default function App() {
         </label>
 
         <div
-          className="grid grid-cols-2 btn p-1 gap-0 hover:bg-slate-100 dark:hover:bg-slate-800 active:opacity-100"
+          className="grid grid-cols-3 btn p-1 gap-0 hover:bg-slate-100 dark:hover:bg-slate-800 active:opacity-100"
           role="group"
         >
           <button
@@ -118,11 +138,48 @@ export default function App() {
             onClick={() => handleRatioChange("full")}
             disabled={!image}
           >
-            Full
+            Portrait
+          </button>
+          <button
+            className={clsx(
+              "btn rounded-lg py-1 ",
+              ratio === "landscape" && "btn-primary"
+            )}
+            aria-pressed={ratio === "full"}
+            onClick={() => handleRatioChange("landscape")}
+            disabled={!image}
+          >
+            Landscape
           </button>
         </div>
       </div>
-
+      <div
+          className="grid grid-cols-2 btn p-1 p-3 gap-0 hover:bg-slate-100 dark:hover:bg-slate-800 active:opacity-100"
+          role="group"
+        >
+          <button
+            className={clsx(
+              "btn rounded-lg py-1",
+              BGColor === "white" && "btn-primary"
+            )}
+            aria-pressed={BGColor === "white"}
+            onClick={() => setBGColor("white")}
+            disabled={!image}
+          >
+            White
+          </button>
+          <button
+            className={clsx(
+              "btn rounded-lg py-1",
+              BGColor === "black" && "btn-primary"
+            )}
+            aria-pressed={BGColor === "black"}
+            onClick={() => setBGColor("black")}
+            disabled={!image}
+          >
+            Black
+          </button>
+        </div>
       <a
         href={
           outputDataURL ||
@@ -189,6 +246,7 @@ export default function App() {
           >
             @nots_dney
           </a>
+          <a className="opacity-80"> and contributors</a>
         </div>
 
         <div>
