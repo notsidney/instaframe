@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/pa/*"
-  to = "https://plausible.io/:splat"
-  status = 200
+	from = "/pa/*"
+	to = "https://plausible.io/:splat"
+	status = 200
