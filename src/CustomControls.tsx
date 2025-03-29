@@ -1,13 +1,7 @@
 import { useAtom } from "jotai";
 import { RESET } from "jotai/utils";
 import clsx from "clsx";
-import {
-	ratioAtom,
-	colorAtom,
-	widthAtom,
-	minPaddingAtom,
-	Ratio,
-} from "./atoms";
+import { ratioAtom, colorAtom, widthAtom, minPaddingAtom } from "./atoms";
 
 export default function CustomControls() {
 	const [ratio, setRatio] = useAtom(ratioAtom);
