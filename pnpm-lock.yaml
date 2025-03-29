@@ -44,13 +44,16 @@ importers:
         version: 10.4.21(postcss@8.5.3)
       parcel:
         specifier: ^2.6.0
-        version: 2.14.3(@swc/helpers@0.5.15)(postcss@8.5.3)
+        version: 2.14.3(@swc/helpers@0.5.15)(postcss@8.5.3)(svgo@3.3.2)
       postcss:
         specifier: ^8.4.14
         version: 8.5.3
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
+      svgo:
+        specifier: ^3.3.2
+        version: 3.3.2
       tailwindcss:
         specifier: ^4.0.17
         version: 4.0.17
@@ -625,6 +628,10 @@ packages:
   '@tailwindcss/postcss@4.0.17':
     resolution: {integrity: sha512-qeJbRTB5FMZXmuJF+eePd235EGY6IyJZF0Bh0YM6uMcCI4L9Z7dy+lPuLAhxOJzxnajsbjPoDAKOuAqZRtf1PQ==}
 
+  '@trysound/sax@0.2.0':
+    resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
+    engines: {node: '>=10.13.0'}
+
   '@types/prop-types@15.7.14':
     resolution: {integrity: sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==}
 
@@ -652,6 +659,9 @@ packages:
 
   base-x@3.0.11:
     resolution: {integrity: sha512-xz7wQ8xDhdyP7tQxwdteLYeFfS68tSMNCZ/Y37WJ4bhGfKPpqEIlmIyueQHqOyoPhE6xNUqjzRr8ra0eF9VRvA==}
+
+  boolbase@1.0.0:
+    resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
   braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
@@ -696,6 +706,10 @@ packages:
     resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
     engines: {node: '>=18'}
 
+  commander@7.2.0:
+    resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
+    engines: {node: '>= 10'}
+
   cosmiconfig@9.0.0:
     resolution: {integrity: sha512-itvL5h8RETACmOTFc4UfIyB2RfEHi71Ax6E/PivVxq9NseKbOWpeyHEOIbmAw1rs8Ak0VursQNww7lf7YtUwzg==}
     engines: {node: '>=14'}
@@ -704,6 +718,25 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  css-select@5.1.0:
+    resolution: {integrity: sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==}
+
+  css-tree@2.2.1:
+    resolution: {integrity: sha512-OA0mILzGc1kCOCSJerOeqDxDQ4HOh+G8NbOJFOTgOCzpw7fCBubk0fEyxp8AgOL/jvLgYA/uV0cMbe43ElF1JA==}
+    engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
+
+  css-tree@2.3.1:
+    resolution: {integrity: sha512-6Fv1DV/TYw//QF5IzQdqsNDjx/wc8TrMBZsqjL9eW01tWb7R7k/mq+/VXfJCl7SoD5emsJop9cOByJZfs8hYIw==}
+    engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
+
+  css-what@6.1.0:
+    resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
+    engines: {node: '>= 6'}
+
+  csso@5.0.5:
+    resolution: {integrity: sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==}
+    engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
 
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
@@ -1031,6 +1064,12 @@ packages:
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
+  mdn-data@2.0.28:
+    resolution: {integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==}
+
+  mdn-data@2.0.30:
+    resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
+
   micromatch@4.0.8:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
@@ -1067,6 +1106,9 @@ packages:
   normalize-range@0.1.2:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
+
+  nth-check@2.1.1:
+    resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
   nullthrows@1.1.1:
     resolution: {integrity: sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==}
@@ -1164,6 +1206,11 @@ packages:
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
+
+  svgo@3.3.2:
+    resolution: {integrity: sha512-OoohrmuUlBs8B8o6MB2Aevn+pRIH9zDALSR+6hhqVfa6fRwG/Qw9VUMSMW9VNg2CFc/MTIfabtdOVl9ODIJjpw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
 
   tailwindcss@4.0.17:
     resolution: {integrity: sha512-OErSiGzRa6rLiOvaipsDZvLMSpsBZ4ysB4f0VKGXUrjw2jfkJRd6kjRKV2+ZmTCNvwtvgdDam5D7w6WXsdLJZw==}
@@ -1296,14 +1343,14 @@ snapshots:
       - '@parcel/core'
       - napi-wasm
 
-  '@parcel/config-default@2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(postcss@8.5.3)':
+  '@parcel/config-default@2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(postcss@8.5.3)(svgo@3.3.2)':
     dependencies:
       '@parcel/bundler-default': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))
       '@parcel/compressor-raw': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))
       '@parcel/core': 2.14.3(@swc/helpers@0.5.15)
       '@parcel/namer-default': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))
       '@parcel/optimizer-css': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))
-      '@parcel/optimizer-htmlnano': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(postcss@8.5.3)
+      '@parcel/optimizer-htmlnano': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(postcss@8.5.3)(svgo@3.3.2)
       '@parcel/optimizer-image': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))
       '@parcel/optimizer-svgo': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))
       '@parcel/optimizer-swc': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)
@@ -1447,12 +1494,12 @@ snapshots:
       - '@parcel/core'
       - napi-wasm
 
-  '@parcel/optimizer-htmlnano@2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(postcss@8.5.3)':
+  '@parcel/optimizer-htmlnano@2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(postcss@8.5.3)(svgo@3.3.2)':
     dependencies:
       '@parcel/diagnostic': 2.14.3
       '@parcel/plugin': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))
       '@parcel/utils': 2.14.3
-      htmlnano: 2.1.1(postcss@8.5.3)
+      htmlnano: 2.1.1(postcss@8.5.3)(svgo@3.3.2)
       nullthrows: 1.1.1
       posthtml: 0.16.6
     transitivePeerDependencies:
@@ -2053,6 +2100,8 @@ snapshots:
       postcss: 8.5.3
       tailwindcss: 4.0.17
 
+  '@trysound/sax@0.2.0': {}
+
   '@types/prop-types@15.7.14': {}
 
   '@types/react-dom@18.3.5(@types/react@18.3.20)':
@@ -2083,6 +2132,8 @@ snapshots:
   base-x@3.0.11:
     dependencies:
       safe-buffer: 5.2.1
+
+  boolbase@1.0.0: {}
 
   braces@3.0.3:
     dependencies:
@@ -2118,12 +2169,38 @@ snapshots:
 
   commander@12.1.0: {}
 
+  commander@7.2.0: {}
+
   cosmiconfig@9.0.0:
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
       js-yaml: 4.1.0
       parse-json: 5.2.0
+
+  css-select@5.1.0:
+    dependencies:
+      boolbase: 1.0.0
+      css-what: 6.1.0
+      domhandler: 5.0.3
+      domutils: 3.2.2
+      nth-check: 2.1.1
+
+  css-tree@2.2.1:
+    dependencies:
+      mdn-data: 2.0.28
+      source-map-js: 1.2.1
+
+  css-tree@2.3.1:
+    dependencies:
+      mdn-data: 2.0.30
+      source-map-js: 1.2.1
+
+  css-what@6.1.0: {}
+
+  csso@5.0.5:
+    dependencies:
+      css-tree: 2.2.1
 
   csstype@3.1.3: {}
 
@@ -2208,13 +2285,14 @@ snapshots:
 
   has-flag@4.0.0: {}
 
-  htmlnano@2.1.1(postcss@8.5.3):
+  htmlnano@2.1.1(postcss@8.5.3)(svgo@3.3.2):
     dependencies:
       cosmiconfig: 9.0.0
       posthtml: 0.16.6
       timsort: 0.3.0
     optionalDependencies:
       postcss: 8.5.3
+      svgo: 3.3.2
     transitivePeerDependencies:
       - typescript
 
@@ -2381,6 +2459,10 @@ snapshots:
     dependencies:
       react: 18.3.1
 
+  mdn-data@2.0.28: {}
+
+  mdn-data@2.0.30: {}
+
   micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
@@ -2421,13 +2503,17 @@ snapshots:
 
   normalize-range@0.1.2: {}
 
+  nth-check@2.1.1:
+    dependencies:
+      boolbase: 1.0.0
+
   nullthrows@1.1.1: {}
 
   ordered-binary@1.5.3: {}
 
-  parcel@2.14.3(@swc/helpers@0.5.15)(postcss@8.5.3):
+  parcel@2.14.3(@swc/helpers@0.5.15)(postcss@8.5.3)(svgo@3.3.2):
     dependencies:
-      '@parcel/config-default': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(postcss@8.5.3)
+      '@parcel/config-default': 2.14.3(@parcel/core@2.14.3(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(postcss@8.5.3)(svgo@3.3.2)
       '@parcel/core': 2.14.3(@swc/helpers@0.5.15)
       '@parcel/diagnostic': 2.14.3
       '@parcel/events': 2.14.3
@@ -2528,6 +2614,16 @@ snapshots:
   supports-color@7.2.0:
     dependencies:
       has-flag: 4.0.0
+
+  svgo@3.3.2:
+    dependencies:
+      '@trysound/sax': 0.2.0
+      commander: 7.2.0
+      css-select: 5.1.0
+      css-tree: 2.3.1
+      css-what: 6.1.0
+      csso: 5.0.5
+      picocolors: 1.1.1
 
   tailwindcss@4.0.17: {}
 
