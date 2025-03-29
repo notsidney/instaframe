@@ -71,9 +71,7 @@ export default function Canvas() {
 					className={clsx(
 						"relative z-10 rounded-sm padding-0",
 						"btn-base",
-						"shadow-xl",
-						// "border border-slate-200 border-b-slate-300 dark:border-slate-900 shadow-xl",
-						// "shadow-slate-300 dark:shadow-slate-900",
+						"shadow-xl hover:shadow-xl",
 						"dark:opacity-80 dark:hover:opacity-100",
 						"select-all",
 						"transition-all",

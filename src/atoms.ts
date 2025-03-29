@@ -3,9 +3,9 @@ import { atomWithStorage, RESET } from "jotai/utils";
 
 function atomWithStorageAndReset<T>(key: string, initialValue: T) {
 	const sourceAtom = atomWithStorage<T>(key, initialValue);
-	const derivedAtom = atom<T, [T | typeof RESET], void>(
+	const derivedAtom = atom(
 		(get) => get(sourceAtom),
-		(_, set, nextValue) => {
+		(_, set, nextValue: T | typeof RESET) => {
 			if (nextValue === RESET) set(sourceAtom, initialValue);
 			else set(sourceAtom, nextValue);
 		},

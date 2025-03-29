@@ -1,7 +1,13 @@
 import { useAtom } from "jotai";
 import { RESET } from "jotai/utils";
 import clsx from "clsx";
-import { ratioAtom, colorAtom, widthAtom, minPaddingAtom } from "./atoms";
+import {
+	ratioAtom,
+	colorAtom,
+	widthAtom,
+	minPaddingAtom,
+	Ratio,
+} from "./atoms";
 
 export default function CustomControls() {
 	const [ratio, setRatio] = useAtom(ratioAtom);
@@ -35,7 +41,7 @@ export default function CustomControls() {
 						defaultValue={ratio.x}
 						onChange={(e) => {
 							const x = Number(e.target.value);
-							if (x > 0) setRatio((ratio) => ({ ...ratio, x }));
+							if (x > 0) setRatio({ ...ratio, x });
 						}}
 						aria-label="X"
 						className="input"
@@ -48,7 +54,7 @@ export default function CustomControls() {
 						defaultValue={ratio.y}
 						onChange={(e) => {
 							const y = Number(e.target.value);
-							if (y > 0) setRatio((ratio) => ({ ...ratio, y }));
+							if (y > 0) setRatio({ ...ratio, y });
 						}}
 						aria-label="Y"
 						className="input text-left"

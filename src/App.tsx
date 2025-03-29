@@ -1,5 +1,4 @@
 import { useAtomValue } from "jotai";
-import clsx from "clsx";
 import { DownloadIcon } from "lucide-react";
 import Canvas from "./Canvas";
 import Controls from "./Controls";
