@@ -7,7 +7,7 @@ import {
 	colorAtom,
 	widthAtom,
 	minPaddingAtom,
-} from "./settings";
+} from "./atoms";
 
 export default function Canvas() {
 	const image = useAtomValue(imageAtom);
@@ -69,9 +69,11 @@ export default function Canvas() {
 					}
 					alt="Your image"
 					className={clsx(
-						"relative z-10 rounded-sm",
-						"border border-slate-200 border-t-slate-100 border-b-slate-300 dark:border-slate-900 shadow-xl",
-						"shadow-slate-300 dark:shadow-slate-900",
+						"relative z-10 rounded-sm padding-0",
+						"btn-base",
+						"shadow-xl",
+						// "border border-slate-200 border-b-slate-300 dark:border-slate-900 shadow-xl",
+						// "shadow-slate-300 dark:shadow-slate-900",
 						"dark:opacity-80 dark:hover:opacity-100",
 						"select-all",
 						"transition-all",

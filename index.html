@@ -6,16 +6,16 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="color-scheme" content="light dark" />
-		<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-		<link rel="apple-touch-icon" href="./apple-touch-icon.png" />
-		<link rel="manifest" href="./site.webmanifest" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
 
 		<!-- Primary Meta Tags -->
 		<title>Instaframe</title>
 		<meta name="title" content="Instaframe" />
 		<meta
 			name="description"
-			content="Frame your Instagram photos for free. No ads. No tracking."
+			content="Frame your Instagram photos for free. No ads. No tracking. All on device."
 		/>
 
 		<!-- Open Graph / Facebook -->
@@ -26,7 +26,7 @@
 			property="og:description"
 			content="Frame your Instagram photos for free. No ads. No tracking."
 		/>
-		<meta property="og:image" content="./meta.jpg" />
+		<meta property="og:image" content="/meta.jpg" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
@@ -40,11 +40,9 @@
 			property="twitter:image"
 			content="https://instaframe.sidney.me/meta.jpg"
 		/>
-
-		<link href="./index.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div id="app"></div>
-		<script type="module" src="index.tsx"></script>
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
 	</body>
 </html>

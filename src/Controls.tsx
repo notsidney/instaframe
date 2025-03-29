@@ -9,8 +9,8 @@ import {
 	Settings2Icon,
 } from "lucide-react";
 import CustomControls from "./CustomControls";
-import { RATIOS } from "./settings";
-import { imageAtom, ratioAtom, isRatioEqual } from "./settings";
+import { RATIOS } from "./atoms";
+import { imageAtom, ratioAtom, isRatioEqual } from "./atoms";
 
 export default function Controls() {
 	const [image, setImage] = useAtom(imageAtom);

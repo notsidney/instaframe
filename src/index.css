@@ -16,19 +16,27 @@
 
 @utility btn-base {
 	@apply transition-all;
-	@apply bg-white dark:bg-slate-700 dark:hover:bg-slate-600;
-	@apply shadow-sm hover:shadow-md;
+	@apply bg-white/70 dark:bg-slate-700;
+	@apply hover:bg-white dark:hover:bg-slate-600;
+	@apply border-1 border-slate-200 border-b-slate-300;
+	@apply dark:border-slate-900 dark:border-b-slate-950;
+	@apply inset-shadow-xs inset-shadow-white/30 dark:inset-shadow-white/20;
+	@apply shadow-xs hover:shadow-md;
 }
 
 @utility recessed {
 	@apply bg-slate-200 dark:bg-slate-900;
 	@apply shadow-inner;
+
+	.btn:not(.btn-primary) {
+		@apply border-slate-300 border-b-slate-300;
+		@apply dark:border-slate-900 dark:border-b-slate-950;
+	}
 }
 
 @layer components {
 	.btn {
 		@apply btn-base;
-		@apply hover:ring-1 hover:ring-slate-300 dark:hover:ring-0;
 		@apply rounded-xl py-2 px-4;
 		@apply active:scale-95;
 		@apply flex gap-1.5 items-center justify-center;
@@ -36,17 +44,17 @@
 		@apply cursor-pointer select-none;
 
 		@apply disabled:opacity-30 disabled:pointer-events-none;
+		@apply disabled:bg-slate-200 disabled:dark:bg-slate-800;
+		@apply disabled:border-transparent disabled:shadow-none;
 	}
 
 	.btn-primary {
-		@apply bg-primary-500 hover:bg-primary-400;
-		@apply inset-ring-1 inset-ring-primary-700;
-		@apply hover:ring-transparent hover:inset-ring-primary-500;
+		@apply bg-primary-500 hover:bg-primary-600;
+		@apply border-primary-600 border-b-primary-700;
+		@apply dark:border-primary-900 dark:border-b-primary-950;
 		@apply shadow-primary-900/30;
 		@apply text-white hover:text-white;
 
-		@apply disabled:bg-slate-200 disabled:dark:bg-slate-800;
-		@apply disabled:inset-ring-0 disabled:shadow-none;
 		@apply disabled:text-current;
 	}
 
@@ -68,14 +76,11 @@
 			@apply rounded-lg py-1;
 		}
 		.btn:not(.btn-primary) {
-			@apply bg-transparent ring-0 shadow-none;
+			@apply bg-transparent border-0 shadow-none inset-shadow-none;
 			&:hover {
 				@apply btn-base;
-				@apply ring-0 shadow-none;
+				@apply border-0;
 			}
-		}
-		&.disabled {
-			@apply opacity-30;
 		}
 	}
 
@@ -105,6 +110,7 @@
 		@apply caret-primary-500;
 		@apply font-normal text-right;
 		@apply bg-white dark:bg-slate-950;
+		@apply inset-shadow-xs;
 		@apply ring-1 ring-slate-300 dark:ring-slate-700;
 
 		@apply focus:outline-3 focus:outline-offset-1 focus:outline-primary-500/30;

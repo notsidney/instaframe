@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { DownloadIcon } from "lucide-react";
 import Canvas from "./Canvas";
 import Controls from "./Controls";
-import { imageAtom } from "./settings";
+import { imageAtom } from "./atoms";
 
 export default function App() {
 	const image = useAtomValue(imageAtom);
