@@ -1,17 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer components {
-	.btn {
-		@apply bg-slate-100 hover:bg-slate-200 active:opacity-50 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl py-2 px-4 flex gap-1.5 items-center justify-center dark:text-white text-center font-medium select-none disabled:opacity-30 disabled:pointer-events-none transition-colors;
-	}
+@config '../tailwind.config.js';
 
-	.btn-primary {
-		@apply bg-primary-500 hover:bg-primary-400 text-white disabled:bg-slate-200 disabled:text-current disabled:dark:bg-slate-800;
-	}
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-	.btn-lg {
-		@apply shadow py-3 px-5 text-xl font-semibold;
-	}
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility btn {
+  @apply bg-slate-100 hover:bg-slate-200 active:opacity-50 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl py-2 px-4 flex gap-1.5 items-center justify-center dark:text-white text-center font-medium select-none disabled:opacity-30 disabled:pointer-events-none transition-colors;
+}
+
+@utility btn-primary {
+  @apply bg-primary-500 hover:bg-primary-400 text-white disabled:bg-slate-200 disabled:text-current dark:disabled:bg-slate-800;
+}
+
+@utility btn-lg {
+  @apply shadow-sm py-3 px-5 text-xl font-semibold;
 }

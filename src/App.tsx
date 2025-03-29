@@ -69,7 +69,7 @@ export default function App() {
 				/>
 				<label
 					className={clsx(
-						"btn cursor-pointer flex-grow",
+						"btn cursor-pointer grow",
 						!image && "btn-primary",
 					)}
 					htmlFor="image"
