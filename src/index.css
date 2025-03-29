@@ -1,33 +1,118 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@config '../tailwind.config.js';
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+@theme {
+	--color-primary-50: #ffeff3;
+	--color-primary-100: #ffe0e9;
+	--color-primary-200: #ffc6d9;
+	--color-primary-300: #ff97b9;
+	--color-primary-400: #ff5d95;
+	--color-primary-500: #ff2476;
+	--color-primary-600: #ff0069;
+	--color-primary-700: #d70058;
+	--color-primary-800: #b40053;
+	--color-primary-900: #99024d;
+	--color-primary-950: #570025;
 }
 
-@utility btn {
-  @apply bg-slate-100 hover:bg-slate-200 active:opacity-50 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl py-2 px-4 flex gap-1.5 items-center justify-center dark:text-white text-center font-medium select-none disabled:opacity-30 disabled:pointer-events-none transition-colors;
+@utility btn-base {
+	@apply transition-all;
+	@apply bg-white dark:bg-slate-700 dark:hover:bg-slate-600;
+	@apply shadow-sm hover:shadow-md;
 }
 
-@utility btn-primary {
-  @apply bg-primary-500 hover:bg-primary-400 text-white disabled:bg-slate-200 disabled:text-current dark:disabled:bg-slate-800;
+@utility recessed {
+	@apply bg-slate-200 dark:bg-slate-900;
+	@apply shadow-inner;
 }
 
-@utility btn-lg {
-  @apply shadow-sm py-3 px-5 text-xl font-semibold;
+@layer components {
+	.btn {
+		@apply btn-base;
+		@apply hover:ring-1 hover:ring-slate-300 dark:hover:ring-0;
+		@apply rounded-xl py-2 px-4;
+		@apply active:scale-95;
+		@apply flex gap-1.5 items-center justify-center;
+		@apply dark:text-white text-center font-medium;
+		@apply cursor-pointer select-none;
+
+		@apply disabled:opacity-30 disabled:pointer-events-none;
+	}
+
+	.btn-primary {
+		@apply bg-primary-500 hover:bg-primary-400;
+		@apply inset-ring-1 inset-ring-primary-700;
+		@apply hover:ring-transparent hover:inset-ring-primary-500;
+		@apply shadow-primary-900/30;
+		@apply text-white hover:text-white;
+
+		@apply disabled:bg-slate-200 disabled:dark:bg-slate-800;
+		@apply disabled:inset-ring-0 disabled:shadow-none;
+		@apply disabled:text-current;
+	}
+
+	.btn-lg {
+		@apply py-3 px-5;
+		@apply text-xl font-semibold;
+	}
+
+	.btn-sm {
+		@apply rounded-lg py-1 px-2;
+	}
+
+	.btn-group {
+		@apply recessed;
+		@apply rounded-xl py-2 px-4;
+		@apply grid gap-0 p-1;
+
+		.btn {
+			@apply rounded-lg py-1;
+		}
+		.btn:not(.btn-primary) {
+			@apply bg-transparent ring-0 shadow-none;
+			&:hover {
+				@apply btn-base;
+				@apply ring-0 shadow-none;
+			}
+		}
+		&.disabled {
+			@apply opacity-30;
+		}
+	}
+
+	.btn-icon {
+		@apply p-2;
+	}
+
+	input[type="color" i]::-webkit-color-swatch-wrapper,
+	input[type="color" i]::-moz-color-swatch-wrapper {
+		@apply p-0;
+	}
+
+	input[type="color" i]::-webkit-color-swatch,
+	input[type="color" i]::-moz-color-swatch {
+		@apply rounded-lg aspect-square;
+		@apply border-0 inset-ring-1 inset-ring-slate-400/50;
+	}
+
+	legend,
+	label {
+		@apply font-medium;
+	}
+
+	.input {
+		@apply rounded-lg;
+		@apply block min-w-0 w-full grow py-1 pr-3 pl-1;
+		@apply caret-primary-500;
+		@apply font-normal text-right;
+		@apply bg-white dark:bg-slate-950;
+		@apply ring-1 ring-slate-300 dark:ring-slate-700;
+
+		@apply focus:outline-3 focus:outline-offset-1 focus:outline-primary-500/30;
+		@apply focus:ring-1 focus:ring-primary-500;
+	}
+}
+
+body {
+	@apply cursor-default;
+	@apply bg-slate-100 dark:bg-slate-800;
 }
