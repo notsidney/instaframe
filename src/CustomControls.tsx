@@ -86,7 +86,7 @@ export default function CustomControls() {
 					value={color}
 					onChange={(e) => setColor(e.target.value)}
 					aria-label="Color"
-					className="block w-8 h-8"
+					className="input shrink-0 w-8 h-8 box-content"
 				/>
 			</div>
 

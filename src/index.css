@@ -36,7 +36,7 @@
 
 @utility input-base {
 	@apply rounded-lg;
-	@apply block min-w-0 w-full grow py-1 pr-3 pl-1;
+	@apply block min-w-0 w-full grow py-1 px-3;
 	@apply caret-primary-500;
 	@apply font-normal text-right;
 	@apply bg-white dark:bg-slate-950;
@@ -44,8 +44,8 @@
 	@apply border-1 border-slate-300;
 	@apply dark:border-1 dark:border-slate-700;
 
-	@apply focus:outline-offset-0;
 	@apply focus:border-1 focus:border-primary-500;
+	@apply focus:outline-3 focus:outline-offset-0 focus:outline-primary-500/30 dark:focus:outline-primary-400/50;
 }
 
 @utility recessed {
@@ -120,21 +120,18 @@
 		@apply font-medium;
 	}
 
-	/* input[type="color" i] {
-		@apply input-base;
-		@apply p-0;
-	} */
+	input[type="color" i] {
+		@apply p-0 overflow-hidden;
 
-	input[type="color" i]::-webkit-color-swatch-wrapper,
-	input[type="color" i]::-moz-color-swatch-wrapper {
-		@apply p-0;
-	}
+		&::-webkit-color-swatch-wrapper,
+		&::-moz-color-swatch-wrapper {
+			@apply p-0;
+		}
 
-	input[type="color" i]::-webkit-color-swatch,
-	input[type="color" i]::-moz-color-swatch {
-		@apply rounded-lg aspect-square;
-		@apply border-0;
-		@apply inset-ring-1 inset-ring-slate-400/50;
+		&::-webkit-color-swatch,
+		&::-moz-color-swatch {
+			@apply border-0;
+		}
 	}
 
 	.input {

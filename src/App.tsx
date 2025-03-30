@@ -1,13 +1,8 @@
-import { useAtomValue } from "jotai";
 import { DownloadIcon } from "lucide-react";
 import Canvas from "./Canvas";
 import Controls from "./Controls";
-import Expand from "./Expand";
-import { imageAtom } from "./atoms";
 
 export default function App() {
-	const image = useAtomValue(imageAtom);
-
 	return (
 		<main className="container mx-auto max-w-md p-4 pt-6 flex flex-col gap-4 select-none">
 			<header>
@@ -17,15 +12,13 @@ export default function App() {
 			<Controls />
 			<Canvas />
 
-			<Expand expanded={image != null}>
-				<div className="flex gap-2">
-					<DownloadIcon />
-					<span>
-						<b className="font-semibold">To save:</b> Touch and hold &gt;
-						Save&nbsp;to&nbsp;Photos
-					</span>
-				</div>
-			</Expand>
+			<div className="flex gap-2">
+				<DownloadIcon />
+				<span>
+					<b className="font-semibold">To save:</b> Touch and hold &gt;
+					Save&nbsp;to&nbsp;Photos
+				</span>
+			</div>
 
 			<footer className="mt-auto text-sm text-slate-500 dark:text-slate-400 flex justify-between">
 				<div>
