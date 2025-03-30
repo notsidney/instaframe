@@ -8,6 +8,7 @@ import {
 	SquareIcon,
 	Settings2Icon,
 } from "lucide-react";
+import Expand from "./Expand";
 import CustomControls from "./CustomControls";
 import { RATIOS } from "./atoms";
 import { imageAtom, ratioAtom, isRatioEqual } from "./atoms";
@@ -104,20 +105,10 @@ export default function Controls() {
 				</div>
 			</div>
 
-			<div
-				className={clsx(
-					"grid grid-rows-[0fr] transition-[grid-template-rows] overflow-hidden",
-					showCustomControls && "grid-rows-[1fr]",
-				)}
-			>
-				<div
-					className="min-h-0 transition-[visibility]"
-					style={{ visibility: showCustomControls ? "visible" : "hidden" }}
-				>
-					<div className="h-2" />
-					<CustomControls />
-				</div>
-			</div>
+			<Expand expanded={showCustomControls}>
+				<div className="h-2" />
+				<CustomControls />
+			</Expand>
 		</section>
 	);
 }

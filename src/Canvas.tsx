@@ -70,11 +70,14 @@ export default function Canvas() {
 					alt="Your image"
 					className={clsx(
 						"relative z-10 rounded-sm padding-0",
-						"btn-base",
-						"shadow-xl hover:shadow-xl",
+						"btn-base bg-none",
+						"border-1 border-slate-500/20 border-b-slate-500/40",
+						"dark:border-1 dark:border-slate-950/30 dark:border-b-slate-950/40",
+						"shadow-xl shadow-slate-500/20 dark:shadow-slate-950/20",
 						"dark:opacity-80 dark:hover:opacity-100",
 						"select-all",
 						"transition-all",
+						!image && "pointer-events-none cursor-default",
 					)}
 					width={width}
 					height={width / canvasRatio}
