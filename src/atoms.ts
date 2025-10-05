@@ -17,7 +17,7 @@ export const imageAtom = atom<HTMLImageElement | undefined>();
 
 export type Ratio = { x: number; y: number };
 export const RATIOS: Ratio[] = [
-	{ x: 4, y: 5 },
+	{ x: 3, y: 4 },
 	{ x: 1, y: 1 },
 	{ x: 1.91, y: 1 },
 ];
