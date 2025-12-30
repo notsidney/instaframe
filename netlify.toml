@@ -5,5 +5,5 @@ environment = { NODE_VERSION = "22" }
 
 [[redirects]]
 from = "/pa/*"
-to = "https://plausible.io/:splat"
+to = "https://p.sidney.me/:splat"
 status = 200
