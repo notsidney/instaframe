@@ -2,8 +2,3 @@
 command = "pnpm run build"
 publish = "dist"
 environment = { NODE_VERSION = "22" }
-
-[[redirects]]
-from = "/pa/*"
-to = "https://p.sidney.me/:splat"
-status = 200
