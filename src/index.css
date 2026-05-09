@@ -107,7 +107,8 @@
 		}
 		.btn:not([aria-pressed="true"]) {
 			@apply bg-transparent bg-none border-0 shadow-none inset-shadow-none;
-			@apply hover:btn-base hover:shadow-xs;
+			/*@apply hover:btn-base hover:shadow-xs;*/
+			@apply hover:bg-white/40 hover:dark:bg-slate-700/40;
 		}
 	}
 
@@ -118,6 +119,7 @@
 	legend,
 	label {
 		@apply font-medium;
+		@apply focus-within:outline-3 focus-within:outline-offset-2 focus-within:outline-primary-500/30 dark:focus-within:outline-primary-400/50;
 	}
 
 	input[type="color" i] {

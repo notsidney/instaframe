@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAtom, useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import clsx from "clsx";
 import {
 	ImageIcon,
@@ -11,11 +11,15 @@ import {
 import Expand from "./Expand";
 import CustomControls from "./CustomControls";
 import { RATIOS } from "./atoms";
-import { imageAtom, ratioAtom, isRatioEqual, fileNameAtom } from "./atoms";
+import { imageAtom, ratioAtom, isRatioEqual } from "./atoms";
+import type { DropzoneState } from "react-dropzone";
 
-export default function Controls() {
-	const [image, setImage] = useAtom(imageAtom);
-	const setFileName = useSetAtom(fileNameAtom);
+export default function Controls({
+	getDropzoneInputProps,
+}: {
+	getDropzoneInputProps: DropzoneState["getInputProps"];
+}) {
+	const [image] = useAtom(imageAtom);
 	const [ratio, setRatio] = useAtom(ratioAtom);
 	const [showCustomControls, setShowCustomControls] = useState(false);
 
@@ -24,7 +28,7 @@ export default function Controls() {
 			<div className="flex gap-2 flex-wrap">
 				<label
 					className={clsx(
-						"btn flex-grow relative",
+						"btn flex-grow relative cursor-pointer",
 						!image && "btn-primary",
 						"truncate",
 					)}
@@ -32,32 +36,10 @@ export default function Controls() {
 					<ImageIcon aria-label="image" />
 					Choose…
 					<input
-						type="file"
-						accept="image/*"
-						id="image"
+						{...getDropzoneInputProps()}
+						tabIndex={0}
+						style={undefined}
 						className="opacity-0 absolute inset-0 cursor-pointer"
-						onChange={(e) => {
-							const file = e.target.files?.[0];
-							if (!file) return;
-
-							const fileName =
-								"instaframe-" +
-								file.name.replace(".jpeg", "").replace(".jpg", "") +
-								".jpg";
-							setFileName(fileName);
-
-							const fr = new FileReader();
-							fr.onload = () => {
-								const img = new Image();
-								img.onload = () => setImage(img);
-								img.src = fr.result as string;
-							};
-							fr.readAsDataURL(file);
-						}}
-						onDragOver={(e) => {
-							e.stopPropagation();
-							e.preventDefault();
-						}}
 					/>
 				</label>
 

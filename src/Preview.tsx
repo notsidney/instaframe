@@ -14,7 +14,7 @@ export default function Preview() {
 	const canvasRatio = ratio.x / ratio.y;
 
 	return (
-		<div ref={containerRef} className="w-full">
+		<div ref={containerRef} className="w-full px-0.5">
 			<img
 				src={
 					output?.url ||
