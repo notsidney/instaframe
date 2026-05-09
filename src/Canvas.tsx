@@ -1,97 +1,64 @@
-import { useRef } from "react";
-import { useAtomValue } from "jotai";
-import clsx from "clsx";
+import { useRef, useEffect } from "react";
+import { useAtomValue, useSetAtom } from "jotai";
 import {
 	imageAtom,
 	ratioAtom,
 	colorAtom,
 	widthAtom,
 	minPaddingAtom,
+	outputAtom,
 } from "./atoms";
 
 export default function Canvas() {
+	const setOutput = useSetAtom(outputAtom);
 	const image = useAtomValue(imageAtom);
 	const ratio = useAtomValue(ratioAtom);
 	const color = useAtomValue(colorAtom);
 	const width = useAtomValue(widthAtom);
 	const minPadding = useAtomValue(minPaddingAtom);
 
-	const containerRef = useRef<HTMLDivElement>(null);
-
-	const canvasRatio = ratio.x / ratio.y;
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const canvas = canvasRef.current;
-	const ctx = canvas?.getContext("2d");
-	let outputDataURL = "";
-	if (canvas && ctx) {
+
+	useEffect(() => {
+		const canvas = canvasRef.current;
+		const ctx = canvas?.getContext("2d");
+		const canvasRatio = ratio.x / ratio.y;
+
+		if (!canvas || !ctx || !image) return;
+
 		canvas.width = width;
 		canvas.height = width / canvasRatio;
 		ctx.fillStyle = color;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-		if (image) {
-			const imageRatio = image.width / image.height;
+		const imageRatio = image.width / image.height;
 
-			let x = minPadding;
-			let y = minPadding;
-			let w = image.width;
-			let h = image.height;
+		let x = minPadding;
+		let y = minPadding;
+		let w = image.width;
+		let h = image.height;
 
-			if (imageRatio >= canvasRatio) {
-				w = canvas.width - x * 2;
-				h = image.height * (w / image.width);
-				y = (canvas.height - h) / 2;
-			} else {
-				h = canvas.height - y * 2;
-				w = image.width * (h / image.height);
-				x = (canvas.width - w) / 2;
-			}
-
-			ctx.drawImage(image, x, y, w, h);
+		if (imageRatio >= canvasRatio) {
+			w = canvas.width - x * 2;
+			h = image.height * (w / image.width);
+			y = (canvas.height - h) / 2;
+		} else {
+			h = canvas.height - y * 2;
+			w = image.width * (h / image.height);
+			x = (canvas.width - w) / 2;
 		}
-		outputDataURL = canvas.toDataURL("image/jpeg", 80);
-	}
 
-	return (
-		<div ref={containerRef} className="w-full flex items-center">
-			<a
-				href={
-					outputDataURL ||
-					"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-				}
-				download
-				className="w-full"
-			>
-				<img
-					src={
-						outputDataURL ||
-						"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-					}
-					alt="Your image"
-					className={clsx(
-						"relative z-10 rounded-sm padding-0",
-						"btn-base bg-none",
-						"border-1 border-slate-500/20 border-b-slate-500/40",
-						"dark:border-1 dark:border-slate-950/30 dark:border-b-slate-950/40",
-						"shadow-xl shadow-slate-500/20 dark:shadow-slate-950/20",
-						"select-all",
-						"transition-all",
-						!image && "pointer-events-none cursor-default",
-					)}
-					width={width}
-					height={width / canvasRatio}
-					style={
-						containerRef.current
-							? {
-									width: containerRef.current.offsetWidth,
-									height: containerRef.current.offsetWidth / canvasRatio,
-								}
-							: undefined
-					}
-				/>
-			</a>
+		ctx.drawImage(image, x, y, w, h);
+		canvas.toBlob(
+			(blob) => {
+				if (!blob) return;
+				const url = URL.createObjectURL(blob);
+				setOutput({ url, blob });
+			},
+			"image/jpeg",
+			80,
+		);
+	}, [ratio, color, image, minPadding, setOutput, width]);
 
-			<canvas id="canvas" ref={canvasRef} className="hidden" />
-		</div>
-	);
+	return <canvas id="canvas" ref={canvasRef} className="hidden" />;
 }

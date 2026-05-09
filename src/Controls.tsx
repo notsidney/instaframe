@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import clsx from "clsx";
 import {
 	ImageIcon,
@@ -11,10 +11,11 @@ import {
 import Expand from "./Expand";
 import CustomControls from "./CustomControls";
 import { RATIOS } from "./atoms";
-import { imageAtom, ratioAtom, isRatioEqual } from "./atoms";
+import { imageAtom, ratioAtom, isRatioEqual, fileNameAtom } from "./atoms";
 
 export default function Controls() {
 	const [image, setImage] = useAtom(imageAtom);
+	const setFileName = useSetAtom(fileNameAtom);
 	const [ratio, setRatio] = useAtom(ratioAtom);
 	const [showCustomControls, setShowCustomControls] = useState(false);
 
@@ -38,6 +39,13 @@ export default function Controls() {
 						onChange={(e) => {
 							const file = e.target.files?.[0];
 							if (!file) return;
+
+							const fileName =
+								"instaframe-" +
+								file.name.replace(".jpeg", "").replace(".jpg", "") +
+								".jpg";
+							setFileName(fileName);
+
 							const fr = new FileReader();
 							fr.onload = () => {
 								const img = new Image();
@@ -79,7 +87,7 @@ export default function Controls() {
 							return (
 								<button
 									key={valueRatio}
-									className={clsx("btn btn-icon", isActive && "btn-primary")}
+									className={clsx("btn btn-icon")}
 									aria-pressed={isActive}
 									onClick={() => setRatio(value)}
 									disabled={!image}

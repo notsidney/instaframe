@@ -105,7 +105,7 @@
 		.btn {
 			@apply rounded-lg py-1;
 		}
-		.btn:not(.btn-primary) {
+		.btn:not([aria-pressed="true"]) {
 			@apply bg-transparent bg-none border-0 shadow-none inset-shadow-none;
 			@apply hover:btn-base hover:shadow-xs;
 		}

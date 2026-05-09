@@ -14,6 +14,8 @@ function atomWithStorageAndReset<T>(key: string, initialValue: T) {
 }
 
 export const imageAtom = atom<HTMLImageElement | undefined>();
+export const fileNameAtom = atom<string>("instaframe.jpg");
+export const outputAtom = atom<{ url: string; blob: Blob } | undefined>();
 
 export type Ratio = { x: number; y: number };
 export const RATIOS: Ratio[] = [

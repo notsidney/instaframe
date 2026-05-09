@@ -1,6 +1,7 @@
-import { DownloadIcon } from "lucide-react";
-import Canvas from "./Canvas";
 import Controls from "./Controls";
+import Canvas from "./Canvas";
+import Preview from "./Preview";
+import ExportControls from "./ExportControls";
 
 export default function App() {
 	return (
@@ -11,14 +12,8 @@ export default function App() {
 
 			<Controls />
 			<Canvas />
-
-			<div className="flex gap-2">
-				<DownloadIcon />
-				<span>
-					<b className="font-semibold">To save:</b> Touch and hold &gt;
-					Save&nbsp;to&nbsp;Photos
-				</span>
-			</div>
+			<Preview />
+			<ExportControls />
 
 			<footer className="mt-auto text-sm text-slate-500 dark:text-slate-400 flex justify-between">
 				<div>
